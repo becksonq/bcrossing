@@ -5,6 +5,7 @@ return [
         '@npm'   => '@vendor/npm-asset',
     ],
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
+    'name' => 'BookCrossing test',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -13,6 +14,18 @@ return [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
+            'enableFlashMessages'      => false,
+//            'modelMap'        => [
+//                'User' => 'frontend\models\user\User',
+//            ],
+            'mailer'                   => [
+                'sender'                => [ 'no-reply@myhost.com' => 'Administrator' ],
+                // or ['no-reply@myhost.com' => 'Sender name']
+                'welcomeSubject'        => 'Welcome subject',
+                'confirmationSubject'   => 'Confirmation subject',
+                'reconfirmationSubject' => 'Email change subject',
+                'recoverySubject'       => 'Recovery subject',
+            ]
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
     ],

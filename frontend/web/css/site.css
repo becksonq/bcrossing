@@ -95,7 +95,30 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
+.fa {
+    margin-right: 7px;
+    margin-left: 7px;
+}
+
 /* align the logout "link" (button in form) of the navbar */
+.navbar-inverse {
+    background-color: #FCCD29;
+    border-color: #393332;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #393332;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #fdfdfd;
+    background-color: #D2B070;
+}
+
+.navbar-inverse .navbar-nav .fa{
+    margin-left: 0;
+}
+
 .nav li > form > button.logout {
     padding: 15px;
     border: none;
