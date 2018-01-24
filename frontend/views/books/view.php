@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\BooksPoints */
+/* @var $model frontend\models\Books */
 
-$this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => 'Book Points', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Books', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="book-points-view">
+<div class="books-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,8 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'title',
-            'address:ntext',
+            'book_title',
+            'description:ntext',
+            'author',
+            'category',
+            'user',
+            'book_point',
             'created_at',
             'updated_at',
         ],

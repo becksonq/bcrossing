@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\BookPointsSearch;
+use frontend\models\BooksPointsSearch;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -30,7 +30,7 @@ class SiteController extends Controller
                 'only' => ['logout', 'signup',],
                 'rules' => [
                     [
-                        'actions' => ['signup', 'book-points/create'],
+                        'actions' => ['signup',],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
@@ -73,13 +73,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new BookPointsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render( '@frontend/views/book-points/index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->redirect( '/book-points/index');
     }
 
     /**

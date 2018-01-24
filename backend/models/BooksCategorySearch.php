@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\BookPoints;
+use backend\models\BooksCategory;
 
 /**
- * BookPointsSearch represents the model behind the search form of `frontend\models\BookPoints`.
+ * BooksCategorySearch represents the model behind the search form of `backend\models\BooksCategory`.
  */
-class BookPointsSearch extends BookPoints
+class BooksCategorySearch extends BooksCategory
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class BookPointsSearch extends BookPoints
     public function rules()
     {
         return [
-            [['id', 'created_at', 'updated_at'], 'integer'],
-            [['title', 'address'], 'safe'],
+            [['id', 'sort'], 'integer'],
+            [['category_name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class BookPointsSearch extends BookPoints
      */
     public function search($params)
     {
-        $query = BookPoints::find();
+        $query = BooksCategory::find();
 
         // add conditions that should always apply here
 
@@ -60,12 +60,10 @@ class BookPointsSearch extends BookPoints
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'sort' => $this->sort,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'address', $this->address]);
+        $query->andFilterWhere(['like', 'category_name', $this->category_name]);
 
         return $dataProvider;
     }

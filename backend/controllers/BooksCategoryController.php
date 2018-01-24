@@ -1,19 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace backend\controllers;
 
 use Yii;
-use frontend\models\BooksPoints;
-use frontend\models\BooksPointsSearch;
+use backend\models\BooksCategory;
+use backend\models\BooksCategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * BookPointsController implements the CRUD actions for BookPoints model.
+ * BooksCategoryController implements the CRUD actions for BooksCategory model.
  */
-class BookPointsController extends Controller
+class BooksCategoryController extends Controller
 {
     /**
      * @inheritdoc
@@ -21,22 +20,6 @@ class BookPointsController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-//                'only' => [],
-                'rules' => [
-                    [
-                        'actions' => ['index, create'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -47,22 +30,22 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Lists all BookPoints models.
+     * Lists all BooksCategory models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BooksPointsSearch();
-        $dataProvider = $searchModel->search( Yii::$app->request->queryParams );
+        $searchModel = new BooksCategorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render( 'index', [
-            'searchModel'  => $searchModel,
+        return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ] );
+        ]);
     }
 
     /**
-     * Displays a single BookPoints model.
+     * Displays a single BooksCategory model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -75,13 +58,13 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Creates a new BookPoints model.
+     * Creates a new BooksCategory model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BooksPoints();
+        $model = new BooksCategory();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -93,7 +76,7 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Updates an existing BookPoints model.
+     * Updates an existing BooksCategory model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -113,7 +96,7 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Deletes an existing BookPoints model.
+     * Deletes an existing BooksCategory model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +110,15 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Finds the BookPoints model based on its primary key value.
+     * Finds the BooksCategory model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BooksPoints the loaded model
+     * @return BooksCategory the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BooksPoints::findOne($id)) !== null) {
+        if (($model = BooksCategory::findOne($id)) !== null) {
             return $model;
         }
 

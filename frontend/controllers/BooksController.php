@@ -3,17 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\BooksPoints;
-use frontend\models\BooksPointsSearch;
+use frontend\models\Books;
+use frontend\models\BooksSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
- * BookPointsController implements the CRUD actions for BookPoints model.
+ * BooksController implements the CRUD actions for Books model.
  */
-class BookPointsController extends Controller
+class BooksController extends Controller
 {
     /**
      * @inheritdoc
@@ -21,22 +20,6 @@ class BookPointsController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-//                'only' => [],
-                'rules' => [
-                    [
-                        'actions' => ['index, create'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => [],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -47,22 +30,33 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Lists all BookPoints models.
+     * Lists all Books models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BooksPointsSearch();
-        $dataProvider = $searchModel->search( Yii::$app->request->queryParams );
+        $searchModel = new BooksSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionViewByPoint( $id )
+    {
+        $searchModel = new BooksSearch();
+        $dataProvider = $searchModel->searchById( $id );
 
         return $this->render( 'index', [
-            'searchModel'  => $searchModel,
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-        ] );
+        ]);
     }
 
     /**
-     * Displays a single BookPoints model.
+     * Displays a single Books model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -75,13 +69,13 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Creates a new BookPoints model.
+     * Creates a new Books model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BooksPoints();
+        $model = new Books();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -93,7 +87,7 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Updates an existing BookPoints model.
+     * Updates an existing Books model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -113,7 +107,7 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Deletes an existing BookPoints model.
+     * Deletes an existing Books model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +121,15 @@ class BookPointsController extends Controller
     }
 
     /**
-     * Finds the BookPoints model based on its primary key value.
+     * Finds the Books model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BooksPoints the loaded model
+     * @return Books the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BooksPoints::findOne($id)) !== null) {
+        if (($model = Books::findOne($id)) !== null) {
             return $model;
         }
 

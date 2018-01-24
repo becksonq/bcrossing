@@ -4,6 +4,8 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use yii\behaviors\SluggableBehavior;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the model class for table "{{%books_points}}".
@@ -14,7 +16,7 @@ use yii\db\ActiveRecord;
  * @property int $created_at
  * @property int $updated_at
  */
-class BookPoints extends ActiveRecord
+class BooksPoints extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -24,14 +26,17 @@ class BookPoints extends ActiveRecord
         return '{{%books_points}}';
     }
 
+    /**
+     * @return array
+     */
     public function behaviors()
     {
         return [
             'timestamp' => [
-                'class'      => 'yii\behaviors\TimestampBehavior',
+                'class' => 'yii\behaviors\TimestampBehavior',
                 'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => [ 'created_at', 'updated_at' ],
-                    ActiveRecord::EVENT_BEFORE_UPDATE => [ 'updated_at' ],
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
                 ],
             ],
         ];
@@ -43,7 +48,7 @@ class BookPoints extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'created_at', 'updated_at'], 'required'],
+            [['title', ], 'required'],
             [['address'], 'string'],
             [['created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 255],

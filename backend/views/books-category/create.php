@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\BooksPoints */
+/* @var $model backend\models\BooksCategory */
 
-$this->title = 'Create Book Points';
-$this->params['breadcrumbs'][] = ['label' => 'Book Points', 'url' => ['index']];
+$this->title = 'Create Books Category';
+$this->params['breadcrumbs'][] = ['label' => 'Books Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="book-points-create">
+<div class="books-category-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

@@ -2,9 +2,10 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\BookPointsSearch */
+/* @var $searchModel frontend\models\BooksPointsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Book Points';
@@ -26,7 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'title',
+						[
+                'attribute' => 'title',
+                'value'     => function ( $data ){
+                    return Html::a( Html::encode( $data->title ), Url::to( [ 'books/view-by-point', 'id' => $data->id ] ) );
+                },
+                'format' => 'raw',
+						],
+//
             'address:ntext',
 //            'created_at',
 //            'updated_at',
