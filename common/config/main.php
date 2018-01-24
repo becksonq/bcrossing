@@ -15,8 +15,9 @@ return [
         'user' => [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages'      => false,
+            'admins'                   => [ 'admin' ],
 //            'modelMap'        => [
-//                'User' => 'frontend\models\user\User',
+//                'User' => 'common\models\User',
 //            ],
             'mailer'                   => [
                 'sender'                => [ 'no-reply@myhost.com' => 'Administrator' ],

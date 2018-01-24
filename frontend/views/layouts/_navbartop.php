@@ -20,7 +20,7 @@ NavBar::begin( [
 $menuItems = [
     [ 'label' => '<i class="fa fa-home" aria-hidden="true"></i>' . 'Главная', 'url' => [ '/site/index' ] ],
     //    [ 'label' => 'О нас', 'url' => [ '/site/about' ] ],
-    [ 'label' => '<i class="fa fa-address-book" aria-hidden="true"></i>' . 'Контакты', 'url' => [ '/site/contact' ] ],
+    [ 'label' => '<i class="fa fa-address-book" aria-hidden="true"></i>' . 'Контакты', 'url' => [ '/book-points/index' ] ],
 ];
 if ( Yii::$app->user->isGuest ) {
     $menuItems[] = [ 'label' => '<i class="fa fa-user-plus" aria-hidden="true"></i>' . 'Регистрация', 'url' => [ '/user/registration/register' ] ];
@@ -30,7 +30,7 @@ if ( Yii::$app->user->isGuest ) {
     ];
 }
 else {
-    $menuItems[] = [ 'label' => '<i class="fa fa-user" aria-hidden="true"></i>' . 'Профиль', 'url' => [ '/user/settings/adverts' ] ];
+    $menuItems[] = [ 'label' => '<i class="fa fa-user" aria-hidden="true"></i>' . 'Профиль', 'url' => [ '/user/settings/profile' ] ];
     $menuItems[] = '<li>'
         . Html::beginForm( [ '/user/security/logout' ], 'post' )
         . Html::submitButton(

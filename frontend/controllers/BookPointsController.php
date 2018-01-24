@@ -23,10 +23,10 @@ class BookPointsController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-//                'only' => ['logout', 'signup'],
+//                'only' => [],
                 'rules' => [
                     [
-                        'actions' => ['book-points/create'],
+                        'actions' => ['index, create'],
                         'allow' => true,
                         'roles' => ['?'],
                     ],
