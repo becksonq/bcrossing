@@ -26,9 +26,6 @@ class m180124_083459_create_books_table extends Migration
             'updated_at'  => $this->integer()->unsigned()->notNull(),
         ], $tableOptions );
 
-        $this->addForeignKey( 'fk-user_id', '{{%books}}', 'user', 'user', 'id' );
-        $this->addForeignKey( 'fk-book_point', '{{%books}}', 'book_point', 'books_points', 'id' );
-
         Yii::$app->db->createCommand()->batchInsert( '{{%books}}', [
             'book_title',
             'description',
@@ -39,30 +36,30 @@ class m180124_083459_create_books_table extends Migration
             'created_at',
             'updated_at'
         ], [
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '3',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '15',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '11',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
-            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1',  mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '3', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '15', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '11', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
+            [ 'Посол нового мира', 'Book description', 'Жуковский Н', '2', '2', '1', mktime(), mktime() ],
         ] )->execute();
     }
 

@@ -4,8 +4,6 @@ namespace frontend\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\behaviors\SluggableBehavior;
-use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the model class for table "{{%books_points}}".
@@ -67,5 +65,13 @@ class BooksPoints extends ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBooks()
+    {
+        return $this->hasMany(Books::className(), ['book_point' => 'id']);
     }
 }

@@ -14,14 +14,14 @@ use frontend\models\Books;
  *
  * @property Books[] $books
  */
-class BooksCategory extends \yii\db\ActiveRecord
+class Categories extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return '{{%books_category}}';
+        return '{{%categories}}';
     }
 
     /**

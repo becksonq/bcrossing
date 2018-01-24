@@ -14,13 +14,13 @@ class m180124_102028_create_books_category_table extends Migration
     {
         $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
 
-        $this->createTable( '{{%books_category}}', [
+        $this->createTable( '{{%categories}}', [
             'id'            => $this->primaryKey(),
             'category_name' => $this->string( 255 )->notNull(),
             'sort'          => $this->integer(),
         ], $tableOptions );
 
-        Yii::$app->db->createCommand()->batchInsert( '{{%books_category}}', [
+        Yii::$app->db->createCommand()->batchInsert( '{{%categories}}', [
             'category_name',
             'sort',
         ], [
@@ -35,6 +35,6 @@ class m180124_102028_create_books_category_table extends Migration
      */
     public function down()
     {
-        $this->dropTable( '{{%books_category}}' );
+        $this->dropTable( '{{%categories}}' );
     }
 }

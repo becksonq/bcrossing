@@ -2,7 +2,7 @@
 
 namespace frontend\models;
 
-use backend\models\BooksCategory;
+use backend\models\Categories;
 use Yii;
 use \yii\db\ActiveRecord;
 use dektrium\user\models\User;
@@ -62,7 +62,7 @@ class Books extends ActiveRecord
             [['book_title', 'author'], 'string', 'max' => 255],
             [ ['book_point'], 'exist', 'skipOnError' => true, 'targetClass' => BooksPoints::className(), 'targetAttribute' => [ 'book_point' => 'id']],
             [['user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user' => 'id']],
-            [['category'], 'exist', 'skipOnError' => true, 'targetClass' => BooksCategory::className(), 'targetAttribute' => ['category' => 'id']],
+            [ ['categories'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => [ 'category' => 'id']],
         ];
     }
 
@@ -87,7 +87,7 @@ class Books extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getBookPoint()
+    public function getBooksPoints()
     {
         return $this->hasOne(BooksPoints::className(), ['id' => 'book_point']);
     }
@@ -95,13 +95,16 @@ class Books extends ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser0()
+    public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user']);
     }
 
-    public function getBooksCategory()
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategories()
     {
-        return $this->hasOne(BooksCategory::className(), ['id' => 'category']);
+        return $this->hasOne(Categories::className(), ['id' => 'category']);
     }
 }

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\BooksCategory */
+/* @var $model backend\models\Categories */
 
 $this->title = 'Create Books Category';
 $this->params['breadcrumbs'][] = ['label' => 'Books Categories', 'url' => ['index']];

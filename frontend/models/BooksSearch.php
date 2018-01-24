@@ -79,7 +79,7 @@ class BooksSearch extends Books
         // TODO: проверка $pointId
         $query = Books::find()
             ->where( [ 'book_point' => $pointId ] )
-            ->joinWith( 'books_category' );
+            ->joinWith( ['categories'] );
 
         $dataProvider = new ActiveDataProvider( [
             'query' => $query,

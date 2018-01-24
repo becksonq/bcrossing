@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\BooksSearch */
@@ -18,7 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Books', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -29,7 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'book_title',
             'description:ntext',
             'author',
-            'category',
+            [
+                'attribute' => 'category',
+                'value'     => function ( $data ){
+                    return $data->categories->category_name;
+                },
+                'format' => 'raw',
+            ],
             //'user',
             //'book_point',
             //'created_at',

@@ -3,14 +3,14 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\BooksCategory;
-use backend\models\BooksCategorySearch;
+use backend\models\Categories;
+use backend\models\CategoriesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * BooksCategoryController implements the CRUD actions for BooksCategory model.
+ * BooksCategoryController implements the CRUD actions for Categories model.
  */
 class BooksCategoryController extends Controller
 {
@@ -30,12 +30,12 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Lists all BooksCategory models.
+     * Lists all Categories models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BooksCategorySearch();
+        $searchModel = new CategoriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Displays a single BooksCategory model.
+     * Displays a single Categories model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -58,13 +58,13 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Creates a new BooksCategory model.
+     * Creates a new Categories model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new BooksCategory();
+        $model = new Categories();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -76,7 +76,7 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Updates an existing BooksCategory model.
+     * Updates an existing Categories model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +96,7 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Deletes an existing BooksCategory model.
+     * Deletes an existing Categories model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +110,15 @@ class BooksCategoryController extends Controller
     }
 
     /**
-     * Finds the BooksCategory model based on its primary key value.
+     * Finds the Categories model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return BooksCategory the loaded model
+     * @return Categories the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = BooksCategory::findOne($id)) !== null) {
+        if (($model = Categories::findOne($id)) !== null) {
             return $model;
         }
 

@@ -5,12 +5,12 @@ namespace backend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\BooksCategory;
+use backend\models\Categories;
 
 /**
- * BooksCategorySearch represents the model behind the search form of `backend\models\BooksCategory`.
+ * CategoriesSearch represents the model behind the search form of `backend\models\Categories`.
  */
-class BooksCategorySearch extends BooksCategory
+class CategoriesSearch extends Categories
 {
     /**
      * @inheritdoc
@@ -41,7 +41,7 @@ class BooksCategorySearch extends BooksCategory
      */
     public function search($params)
     {
-        $query = BooksCategory::find();
+        $query = Categories::find();
 
         // add conditions that should always apply here
 
